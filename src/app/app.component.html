@@ -1,0 +1,64 @@
+<header>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="imgLogo">
+          <a href="index.html">
+            <img src="https://s.yimg.com/fz/api/res/1.2/IXl66WwKm5n2T4tDEeST_A--~C/YXBwaWQ9c3JjaGRkO2ZpPWZpdDtoPTEyMDtxPTgwO3c9MTY2/https://s.yimg.com/zb/imgv1/71e55e11-6a5f-3d09-ac34-5d62f0d53562/t_500x300"alt="">
+          </a>
+        </div>
+      </div>
+      <div class="col-md-4 offset-md-2">
+        <input type="text"placeholder="Search Movie" [(ngModel)]="searchByMovie" class="form-control w-75">
+        <button type="button" class=" btn btn-outline-warning">Search</button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-3 col-sm-6 mb-4 mg-md-0" *ngFor="let movie of movieArray | movie : searchByMovie" >
+                    <div class="card">
+                        <figure>
+                            <img src="https://image.tmdb.org/t/p/w1280/{{movie.poster_path}}" class="img-fluid" id="img-fluid">
+                            <figcaption>
+                                <div class="heading">
+                                    <div class="row">
+                                        <div class="col-md-10">
+                                            <h3>
+                                                {{movie.title}}
+                                            </h3>
+                                        </div>
+                                        <div class="col-md-2 d-flex align-items-center">
+                                            <span class=" p-1" 
+                                            [ngClass]="{
+                                              'bg-success' : movie.vote_average >=4,
+                                              'bg-warning' : movie.vote_average >=7,
+                                              'bg-danger' : movie.vote_average < 3 
+                                            }">
+                                              <i class="fa-solid fa-star"></i>
+                                              {{movie.vote_average}}
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="overview">
+                                    <h4>
+                                        <em>
+                                            overview
+                                        </em>
+                                    
+                                    </h4>
+                                    <p>
+                                      {{movie.overview}}
+                                    </p>
+                                </div>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div> 
+    </div>
+  </div>
+</main>
